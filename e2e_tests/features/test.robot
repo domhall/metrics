@@ -2,5 +2,5 @@
 Library     Browser
 *** Tasks ***
 Simple test
-    Open Browser
-    New Page    https://playwright.dev
+    New Page            http://localhost:4004
+    Get Title     *=    Metrics

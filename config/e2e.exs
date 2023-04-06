@@ -6,7 +6,7 @@ config :metrics, Metrics.Repo,
   password: "postgres",
   hostname: "localhost",
   port: 4325,
-  database: "metrics_dev",
+  database: "metrics_e2e",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -20,15 +20,10 @@ config :metrics, Metrics.Repo,
 config :metrics, MetricsWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {127, 0, 0, 1}, port: 4004],
   check_origin: false,
-  code_reloader: true,
   debug_errors: true,
-  secret_key_base: "w4H0m9iqmq6s+mHip1PU59m7hZfrBnleCZPtLDBL4Lr0z+UgwSuQTOUvt66x0oFi",
-  watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
-  ]
+  secret_key_base: "w4H0m9iqmq6s+mHip1PU59m7hZfrBnleCZPtLDBL4Lr0z+UgwSuQTOUvt66x0oFi"
 
 # ## SSL Support
 #
@@ -53,15 +48,15 @@ config :metrics, MetricsWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
-# Watch static and templates for browser reloading.
-config :metrics, MetricsWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/metrics_web/(controllers|live|components)/.*(ex|heex)$"
-    ]
-  ]
+# # Watch static and templates for browser reloading.
+# config :metrics, MetricsWeb.Endpoint,
+#   live_reload: [
+#     patterns: [
+#       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+#       ~r"priv/gettext/.*(po)$",
+#       ~r"lib/metrics_web/(controllers|live|components)/.*(ex|heex)$"
+#     ]
+#   ]
 
 # Enable dev routes for dashboard and mailbox
 config :metrics, dev_routes: true
